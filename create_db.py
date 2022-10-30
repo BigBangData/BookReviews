@@ -1,9 +1,9 @@
 import duckdb
-conn = duckdb.connect('books.duckdb')
+conn = duckdb.connect('./database/books.duckdb')
 
 cursor = conn.cursor()
 cursor.execute("""
-    CREATE SCHEMA IF NOT EXISTS amzn;
+    CREATE SCHEMA IF NOT EXISTS core;
 """
 )
  

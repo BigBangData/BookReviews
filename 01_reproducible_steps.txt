@@ -1,20 +1,49 @@
+Setup
+-----
+
 Using git bash 
     $ conda create -name py310 python=3.10
     $ conda install pandas
     $ pip install duckdb==0.5.1
     $ pip install dbt-duckdb
+    $ pip install -U duckcli
     $ conda list -e > requirements.txt
-Recreate:
-    Using conda:
-        $ conda create --name <env> --file requirements.txt
-    Using pip, first save requirements as:
-        $ pip list --format=freeze > requirements.txt
-        Then:
-        $ python3 -m venv env
-        $ source env/bin/activate
-        $ pip install -r requirements.txt
+    Recreate:
+        Using conda:
+            $ conda create --name <env> --file requirements.txt
+        Using pip, first save requirements as:
+            $ pip list --format=freeze > requirements.txt
+            Then:
+            $ python3 -m venv env
+            $ source env/bin/activate
+            $ pip install -r requirements.txt
 
-Download book reviews from:
-https://www.kaggle.com/datasets/mohamedbakhet/amazon-books-reviews
-https://github.com/MengtingWan/goodreads
-http://www2.informatik.uni-freiburg.de/~cziegler/BX/
+Download book review data from:
+    https://www.kaggle.com/datasets/mohamedbakhet/amazon-books-reviews
+    https://github.com/MengtingWan/goodreads
+    http://www2.informatik.uni-freiburg.de/~cziegler/BX/
+
+
+Getting Started
+---------------
+
+1. Create profiles.yml in C:\Users\sanch\.dbt\:
+    book_reviews:
+    target: dev
+    outputs:
+        dev:
+        type: duckdb
+        path: 'C:\Users\sanch\Documents\GitHub\BookReviews\database\books.duckdb'
+        schema: core
+
+2. From BookReviews:
+    $ python create_db.py
+
+3. From BookReviews/book_reviews:
+    $ dbt build
+
+4. From BookReviews/database:
+    $ duckcli books.duckdb
+        > \dt
+        > select count(*) as ct from core.raw_amzn_books_data;
+        > exit
