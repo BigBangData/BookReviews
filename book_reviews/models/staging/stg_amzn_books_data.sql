@@ -1,18 +1,15 @@
-{{ config(
-    enabled=true
-) }}
-
-with renamed as (
-    select 
-        Title as title
-        , description as summary
-        , authors as author
-        , publisher as publisher
-        , publishedDate as published_date
-        , categories as categories
-        , ratingsCount as ratings_count
-    from {{ ref('raw_amzn_books_data') }}
-
+WITH renamed AS (
+    SELECT
+        r.Title AS title,
+        r.description AS summary,
+        r.authors AS author,
+        r.publisher AS publisher,
+        r.publishedDate AS published_date,
+        r.categories AS categories,
+        r.ratingsCount AS ratings_count
+    FROM {{ ref('raw_amzn_books_data') }} AS r
 )
 
-select * from renamed;
+SELECT
+    *
+FROM renamed;
