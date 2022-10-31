@@ -7,6 +7,7 @@ Using git bash
     $ pip install duckdb==0.5.1
     $ pip install dbt-duckdb
     $ pip install -U duckcli
+    $ pip install sqlfluff
     $ conda list -e > requirements.txt
     Recreate:
         Using conda:
@@ -40,7 +41,10 @@ Getting Started
     $ python create_db.py
 
 3. From BookReviews/book_reviews:
-    $ dbt build
+    $ dbt build # will work but populate database with raw data, instead
+    create staging models to rename columns and select just a few 
+    populate database with:
+    # dbt seed
 
 4. From BookReviews/database:
     $ duckcli books.duckdb
