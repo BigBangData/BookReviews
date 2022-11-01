@@ -7,7 +7,7 @@ WITH renamed AS (
         r.publishedDate AS published_date,
         r.categories AS categories,
         r.ratingsCount AS ratings_count
-    FROM {{ ref('raw_amzn_books_data') }} AS r
+    FROM {{ source('data', 'raw_amzn_books_data') }} AS r
 )
 
 SELECT
