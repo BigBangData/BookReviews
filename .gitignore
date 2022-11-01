@@ -1,4 +1,2 @@
-book_reviews/seeds*
-.ipynb_checkpoints/*
-database/*
+data/*
 logs/*
