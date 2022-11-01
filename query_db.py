@@ -1,5 +1,5 @@
 import duckdb
-conn = duckdb.connect('./database/books.duckdb')
+conn = duckdb.connect('./data/books.duckdb')
 
 cursor = conn.cursor()
 query = cursor.execute("""
@@ -12,6 +12,8 @@ res = query.fetchall()
 # print out columns
 for col in res:
     [print(i) for ct, i in enumerate(col) if ct == 1]
+
+print(cursor.execute('SELECT COUNT(*) FROM core.raw_amzn_books_data;').fetchall())
 
 cursor.close()
 conn.close()

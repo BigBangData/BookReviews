@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: core
+    tables:
+      - name: raw_amzn_books_data
+        external:
+          location: 'core/raw_amzn_books_data.csv'

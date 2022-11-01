@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: stg_amzn_books_data
+    description: This table stages the raw amazon books data into the duckdb database
+
+    columns:
+      - name: title
+        description: title of the book
+
