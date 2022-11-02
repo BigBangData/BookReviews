@@ -6,6 +6,12 @@
 WITH renamed AS (
     SELECT
         r.Title AS title
+        , r.description
+        , r.authors
+        , r.publisher
+        , r.publishedDate AS published_date
+        , r.categories
+        , r.ratingsCount AS ratings_count
     FROM {{ source('core', 'raw_amzn_books_data') }} AS r
 )
 

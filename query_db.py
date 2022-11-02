@@ -1,19 +1,31 @@
+import enum
 import duckdb
 conn = duckdb.connect('./data/books.duckdb')
 
 cursor = conn.cursor()
-query = cursor.execute("""
-    PRAGMA table_info('core.raw_amzn_books_data');
+pragma = cursor.execute("""
+    PRAGMA table_info('core.stg_amzn_books_data');
 """
 )
 
-res = query.fetchall()
+res1 = pragma.fetchall()
 
-# print out columns
-for col in res:
-    [print(i) for ct, i in enumerate(col) if ct == 1]
+print('Columns:')
+for ix, col in enumerate(res1):
+    print([(ix+1, val) for ct, val in enumerate(col) if ct == 1])
 
-print(cursor.execute('SELECT COUNT(*) FROM core.raw_amzn_books_data;').fetchall())
+query = cursor.execute("""
+    SELECT *
+    FROM core.stg_amzn_books_data
+    LIMIT 5;
+""")
+
+res2 = query.fetchall()
+
+for ix, row in enumerate(res2):
+    print('Row', ix+1,': ',
+        [val[:15] for ct, val in enumerate(row) if val]
+    )
 
 cursor.close()
 conn.close()
