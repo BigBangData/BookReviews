@@ -6,3 +6,6 @@ sources:
       - name: raw_amzn_books_data
         external:
           location: 'core/raw_amzn_books_data.csv'
+      - name: raw_amzn_books_rating
+        external:
+          location: 'core/raw_amzn_books_rating.csv'

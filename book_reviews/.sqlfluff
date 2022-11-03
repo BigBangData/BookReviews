@@ -23,13 +23,9 @@ allow_scalar = True
 single_table_references = consistent
 unquoted_identifiers_policy = all
 
+# rule-specific
 [sqlfluff:rules:L010]
-# Keywords
-capitalisation_policy = upper
+capitalisation_policy = consistent
 
 [sqlfluff:rules:L019]
 comma_style = leading
-
-[sqlfluff:layout:type:comma]
-spacing_before = touch
-line_position = leading

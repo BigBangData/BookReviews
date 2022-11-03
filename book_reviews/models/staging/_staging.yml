@@ -8,3 +8,11 @@ models:
       - name: title
         description: title of the book
 
+  - name: stg_amzn_books_rating
+    description: This table stages the raw amazon books rating into the duckdb database
+
+    columns:
+      - name: id
+        description: primary key
+      - name: title
+        description: title of the book

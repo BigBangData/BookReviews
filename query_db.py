@@ -4,7 +4,7 @@ conn = duckdb.connect('./data/books.duckdb')
 
 cursor = conn.cursor()
 pragma = cursor.execute("""
-    PRAGMA table_info('core.stg_amzn_books_data');
+    PRAGMA table_info('core.stg_amzn_books_rating');
 """
 )
 
@@ -14,18 +14,20 @@ print('Columns:')
 for ix, col in enumerate(res1):
     print([(ix+1, val) for ct, val in enumerate(col) if ct == 1])
 
-query = cursor.execute("""
-    SELECT *
-    FROM core.stg_amzn_books_data
-    LIMIT 5;
-""")
+# query = cursor.execute("""
+#     SELECT *
+#     FROM core.stg_amzn_books_rating
+#     LIMIT 5;
+# """)
 
-res2 = query.fetchall()
+# res2 = query.fetchall()
+# print(res2)
 
-for ix, row in enumerate(res2):
-    print('Row', ix+1,': ',
-        [val[:15] for ct, val in enumerate(row) if val]
-    )
+print(cursor.execute('SELECT COUNT(*) FROM core.stg_amzn_books_rating;').fetchall())
+# for ix, row in enumerate(res2):
+#     print('Row', ix+1,': ',
+#         [val[:15] for ct, val in enumerate(row) if val]
+#     )
 
 cursor.close()
 conn.close()
