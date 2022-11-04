@@ -5,7 +5,7 @@
 
 WITH renamed AS (
     SELECT
-        r.Title AS title
+        LOWER(r.Title) AS title
         , r.description
         , r.authors
         , r.publisher
