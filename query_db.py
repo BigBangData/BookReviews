@@ -3,17 +3,17 @@ import duckdb
 conn = duckdb.connect('./data/books.duckdb')
 
 cursor = conn.cursor()
-pragma = cursor.execute("""
-    PRAGMA show_tables;
-    PRAGMA table_info('core.vw_amzn_books_ratings');
-"""
-)
+# pragma = cursor.execute("""
+#     PRAGMA show_tables;
+#     PRAGMA table_info('core.vw_amzn_books_ratings');
+# """
+# )
 
-res1 = pragma.fetchall()
+# res1 = pragma.fetchall()
 
-print('Columns:')
-for ix, col in enumerate(res1):
-    print([(ix+1, val) for ct, val in enumerate(col) if ct == 1])
+# print('Columns:')
+# for ix, col in enumerate(res1):
+#     print([(ix+1, val) for ct, val in enumerate(col) if ct == 1])
 
 # query = cursor.execute("""
 #     SELECT * lower = 2703963, 2667782
@@ -25,13 +25,19 @@ for ix, col in enumerate(res1):
 # res2 = query.fetchall()
 # print(res2)
 
+# q = cursor.execute("""
+#     SELECT COUNT(*)
+#     FROM core.vw_amzn_books_ratings;
+# """)
+
+# print(f'View count: {q.fetchall()}')
+
 q = cursor.execute("""
-    SELECT *
-    FROM core.vw_amzn_books_ratings
-    ORDER BY title
-    LIMIT 50;
+    SELECT COUNT(*)
+    FROM core.stg_amzn_books_rating;
 """)
-print(q.fetchall())
+
+print(f'Staged ratings table count: {q.fetchall()}')
 
 # q2 = cursor.execute("""
 #     SELECT COUNT(*) AS CTD
