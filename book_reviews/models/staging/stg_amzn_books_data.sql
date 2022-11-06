@@ -13,6 +13,14 @@ WITH renamed AS (
         , r.categories
         , r.ratingsCount AS ratings_count
     FROM {{ source('core', 'raw_amzn_books_data') }} AS r
+    GROUP BY
+        LOWER(r.Title)
+        , r.description
+        , r.authors
+        , r.publisher
+        , r.publishedDate
+        , r.categories
+        , r.ratingsCount
 )
 
 SELECT * FROM renamed

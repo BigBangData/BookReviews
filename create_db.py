@@ -21,8 +21,19 @@ cursor.execute("""
         );
 """)
 
-print(cursor.execute('DESCRIBE core.raw_amzn_books_data;').fetchall())
-print(cursor.execute('DESCRIBE core.raw_amzn_books_rating;').fetchall())
+#print(cursor.execute('DESCRIBE core.raw_amzn_books_data;').fetchall())
+#print(cursor.execute('DESCRIBE core.raw_amzn_books_rating;').fetchall())
+
+tables = cursor.execute('PRAGMA show_tables;').fetchall()
+
+counts = cursor.execute("""
+    SELECT COUNT(*) FROM core.raw_amzn_books_data
+    UNION
+    SELECT COUNT(*) FROM core.raw_amzn_books_rating;
+""").fetchall()
+
+for k, v in zip(tables, counts):
+    print(k, v)
 
 cursor.close()
 conn.close()

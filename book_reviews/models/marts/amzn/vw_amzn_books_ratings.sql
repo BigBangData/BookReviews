@@ -28,8 +28,8 @@ WITH books AS (
         , r.review_time
         , r.review_summary
         , r.review_text
-    FROM books AS b
-    INNER JOIN ratings AS r
+    FROM ratings AS r
+    LEFT JOIN books AS b
         ON b.title = r.title
     -- dedupe
     GROUP BY
