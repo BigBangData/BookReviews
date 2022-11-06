@@ -28,14 +28,16 @@ Download book review data from:
 Getting Started
 ---------------
 
-1. Create profiles.yml in C:\Users\sanch\.dbt\:
+1. CD into C:\Users\sanch\.dbt\
+    $ vi profiles.yml
     book_reviews:
     target: dev
     outputs:
         dev:
         type: duckdb
-        path: 'C:\Users\sanch\Documents\GitHub\BookReviews\database\books.duckdb'
+        path: 'C:\Users\sanch\Documents\GitHub\BookReviews\data\books.duckdb'
         schema: core
+        threads: 4
 
 2. From BookReviews:
     $ python create_db.py
