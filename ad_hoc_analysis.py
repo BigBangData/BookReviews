@@ -2,12 +2,15 @@ import os
 import duckdb
 
 # next up:
-# delete database
 # recreate database (create_db.py + dbt run)
 # check that size is less than 16.7 GB (size now after failed build of table)
+# dbt run took 58s
+# size 9.6 GB (prob because I renamed into vw_ so --full-refresh didn't replace the badly built table)
 
 # remodel view as table
-# repeat steps above, see if table builds, see size of database 
+# repeat steps above, see if table builds, see size of database
+# table doesn't build: see unicode error
+# size 9.6 GB
 
 # paths
 GIT_DIR = os.path.join(os.environ['HOME'], 'Documents', 'GitHub', 'BookReviews')
