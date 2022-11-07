@@ -1,6 +1,14 @@
 import os
 import duckdb
 
+# next up:
+# delete database
+# recreate database (create_db.py + dbt run)
+# check that size is less than 16.7 GB (size now after failed build of table)
+
+# remodel view as table
+# repeat steps above, see if table builds, see size of database 
+
 # paths
 GIT_DIR = os.path.join(os.environ['HOME'], 'Documents', 'GitHub', 'BookReviews')
 DATA_DIR = os.path.join(GIT_DIR, 'data')
