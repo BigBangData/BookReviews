@@ -1,0 +1,23 @@
+$ dbt run --full-refresh
+←[0m00:05:04  Running with dbt=1.2.2
+←[0m00:05:05  Found 4 models, 0 tests, 0 snapshots, 0 analyses, 251 macros, 0 operations, 0 seed files, 2 sources, 0 exposures, 0 metrics      
+←[0m00:05:05
+←[0m00:05:05  Concurrency: 4 threads (target='dev')
+←[0m00:05:05
+←[0m00:05:05  1 of 4 START table model core.stg_amzn_books_data .............................. [RUN]
+←[0m00:05:05  2 of 4 START table model core.stg_amzn_books_rating ............................ [RUN]
+←[0m00:05:10  1 of 4 OK created table model core.stg_amzn_books_data ......................... [←[32mOK←[0m in 4.67s]
+←[0m00:05:10  3 of 4 START table model core.amzn_books_data_clean ............................ [RUN]
+←[0m00:05:11  3 of 4 OK created table model core.amzn_books_data_clean ....................... [←[32mOK←[0m in 1.40s]
+←[0m00:06:44  2 of 4 OK created table model core.stg_amzn_books_rating ....................... [←[32mOK←[0m in 99.33s]
+←[0m00:06:44  4 of 4 START table model core.amzn_books_reviews ............................... [RUN]
+←[0m00:08:47  4 of 4 ERROR creating table model core.amzn_books_reviews ...................... [←[31mERROR←[0m in 123.03s]
+←[0m00:08:48
+←[0m00:08:48  Finished running 4 table models in 0 hours 3 minutes and 42.99 seconds (222.99s).
+←[0m00:08:48
+←[0m00:08:48  ←[31mCompleted with 1 error and 0 warnings:←[0m
+←[0m00:08:48
+←[0m00:08:48  ←[33mRuntime Error in model amzn_books_reviews (models\marts\amzn\amzn_books_reviews.sql)←[0m
+←[0m00:08:48    INTERNAL Error: Invalid unicode detected in segment statistics update!
+←[0m00:08:48
+←[0m00:08:48  Done. PASS=3 WARN=0 ERROR=1 SKIP=0 TOTAL=4
