@@ -22,13 +22,23 @@ conn = duckdb.connect(os.path.join(DATA_DIR, 'books.duckdb'))
 cursor = conn.cursor()
 
 # query
-# q = cursor.execute("""
-#     SELECT
-#         MAX(book_id)
-#     FROM core.amzn_books_data_clean
-# """)
+q = cursor.execute("""
+    SELECT
+        Id
+        , Title AS title
+        , User_id AS user_id
+        , profileName AS profile_name
+    FROM core.raw_amzn_books_rating
+    WHERE 1 = 1
+        AND id = 'B000I3JBUO'
+        AND user_id = 'A3V1SKITJPMLTS'
+""")
 
-# print(q.fetchall())
+print(q.fetchall())
+
+# first unicode character
+# $ python ad_hoc_analysis.py
+# [('B000I3JBUO', 'One Hundred Years of Solitude', 'A3V1SKITJPMLTS', 'Carlos Eduardo Hern\x1andez Castillo')]
 
 # cleaned up books_data to remove mostly null entries
 # print(210437 - 23992)
