@@ -53,3 +53,18 @@ Getting Started
         > \dt
         > select count(*) as ct from core.raw_amzn_books_data;
         > exit
+
+2022-11-12
+----------
+
+Had issues with invalid unicode in segment statistics (2022_11_06 log):
+https://github.com/duckdb/duckdb/issues/1650#issuecomment-1312204844
+
+Fixed by https://github.com/duckdb/duckdb/pull/5263
+
+Confirmed with (2022_11_12 log):
+    $ pip install --upgrade duckdb
+    $ rm data/books.duckdb
+    $ python create_db.py
+    $ cd book_reviews/
+    $ dbt run

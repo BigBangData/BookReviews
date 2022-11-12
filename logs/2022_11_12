@@ -1,0 +1,22 @@
+$ dbt run
+←[0m17:19:40  Running with dbt=1.2.2
+←[0m17:19:40  Found 5 models, 0 tests, 0 snapshots, 0 analyses, 251 macros, 0 operations, 0 seed files, 2 sources, 0 exposures, 0 metrics
+←[0m17:19:40
+←[0m17:19:40  Concurrency: 4 threads (target='dev')
+←[0m17:19:40
+←[0m17:19:40  1 of 5 START table model core.stg_amzn_books_data .............................. [RUN]
+←[0m17:19:40  2 of 5 START table model core.stg_amzn_books_rating ............................ [RUN]
+←[0m17:19:44  1 of 5 OK created table model core.stg_amzn_books_data ......................... [←[32mOK←[0m in 3.37s]
+←[0m17:19:44  3 of 5 START table model core.amzn_books_data_clean ............................ [RUN]
+←[0m17:19:46  3 of 5 OK created table model core.amzn_books_data_clean ....................... [←[32mOK←[0m in 2.11s]
+←[0m17:21:00  2 of 5 OK created table model core.stg_amzn_books_rating ....................... [←[32mOK←[0m in 79.86s]
+←[0m17:21:00  4 of 5 START table model core.amzn_books_ratings ............................... [RUN]
+←[0m17:21:00  5 of 5 START view model core.vw_amazn_books_ratings ............................ [RUN]
+←[0m17:21:01  5 of 5 OK created view model core.vw_amazn_books_ratings ....................... [←[32mOK←[0m in 0.33s]
+←[0m17:23:41  4 of 5 OK created table model core.amzn_books_ratings .......................... [←[32mOK←[0m in 160.79s]
+←[0m17:23:42  
+←[0m17:23:42  Finished running 4 table models, 1 view model in 0 hours 4 minutes and 1.62 seconds (241.62s).
+←[0m17:23:42  
+←[0m17:23:42  ←[32mCompleted successfully←[0m
+←[0m17:23:42
+←[0m17:23:42  Done. PASS=5 WARN=0 ERROR=0 SKIP=0 TOTAL=5
