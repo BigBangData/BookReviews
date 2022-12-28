@@ -176,7 +176,7 @@ wcwidth=0.2.5=pyhd3eb1b0_0
 webencodings=0.5.1=py310haa95532_1
 websocket-client=0.58.0=py310haa95532_4
 werkzeug=2.1.2=pypi_0
-wheel=0.37.1=pyhd3eb1b0_0
+wheel>=0.38.1
 widgetsnbextension=3.5.2=py310haa95532_0
 win_inet_pton=1.1.0=py310haa95532_0
 wincertstore=0.2=py310haa95532_2
