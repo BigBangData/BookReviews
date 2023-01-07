@@ -38,7 +38,6 @@ duckdb=0.5.1=pypi_0
 entrypoints=0.4=py310haa95532_0
 exceptiongroup=1.0.0=pypi_0
 executing=0.8.3=pyhd3eb1b0_0
-future=0.18.2=pypi_0
 glib=2.69.1=h5dc1a3c_1
 gst-plugins-base=1.18.5=h9e645db_0
 gstreamer=1.18.5=hd78058f_0
